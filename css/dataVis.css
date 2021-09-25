@@ -326,7 +326,7 @@ body .mainbox .column2 .panel .panel-footer:before {
   bottom: 0;
   width: 10px;
   height: 10px;
-  border-left: 2px solid #5ece13;
+  border-left: 2px solid #fff;
   border-bottom: 2px solid #fff;
   content: "";
 }
