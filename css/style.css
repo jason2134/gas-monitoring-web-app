@@ -1,0 +1,440 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+li {
+  list-style: none;
+}
+/*声明字体*/
+@font-face {
+  font-family: electronicFont;
+  src: url(../font/DS-DIGIT.TTF);
+}
+@font-face {
+  font-family: futura;
+  src: url(../font/futura-light.ttf);
+}
+@font-face {
+  font-family: futuraBook;
+  src: url(../font/Futura-Book.ttf);
+}
+body {
+  line-height: 1.15;
+}
+header {
+  min-width: 1039px;
+  max-width: 1920px;
+  width: 100%;
+  position: absolute;
+  height: 131px;
+  background-color: white;
+  background-size: 100% 100%;
+}
+header .tech-box {
+  position: absolute;
+  left: 80px;
+  top: 20px;
+  width: 80px;
+  height: 80px;
+}
+header .heading1 {
+  font-family: "futuraBook";
+  position: absolute;
+  left: 175px;
+  top: 23px;
+  font-size: 32px;
+  color: black;
+  width: 712px;
+  height: 43px;
+}
+header .heading2 {
+  font-family: "futura";
+  position: absolute;
+  left: 175px;
+  top: 68px;
+  font-size: 16px;
+  color: black;
+  width: 300px;
+  height: 28px;
+  font-weight: 100;
+}
+header .time {
+  position: absolute;
+  right: 0.375rem;
+  top: 0;
+  line-height: 0.9375rem;
+  color: black;
+  font-size: 0.25rem;
+}
+header .navBar {
+  position: absolute;
+  top: 100px;
+  height: 240px;
+  width: 100%;
+  background-color: #efefef;
+}
+header .navBar navBarHome {
+  font-family: Helvetica;
+  text-align: left;
+  float: left;
+  position: absolute;
+  left: 86px;
+  padding: 8px 20px;
+  font-size: 20px;
+  color: black;
+  font-weight: normal;
+  text-decoration: none;
+}
+header .navBar navBarUs {
+  font-family: Helvetica;
+  text-align: left;
+  float: left;
+  position: absolute;
+  left: 206px;
+  padding: 8px 20px;
+  font-size: 20px;
+  color: black;
+  font-weight: normal;
+  text-decoration: none;
+}
+header .navBar navBarAir {
+  font-family: Helvetica;
+  text-align: left;
+  float: left;
+  position: absolute;
+  left: 316px;
+  padding: 8px 40px;
+  font-size: 20px;
+  color: black;
+  font-weight: normal;
+  text-decoration: none;
+}
+header .timeFromContainer {
+  position: absolute;
+  font-family: Helvetica;
+  font-size: 10px;
+  top: 45px;
+  height: 10px;
+  width: 18%;
+  right: 1px;
+}
+header .timeToContainer {
+  position: absolute;
+  font-family: Helvetica;
+  font-size: 10px;
+  top: 70px;
+  height: 10px;
+  width: 18%;
+  right: 1px;
+  padding-left: 12px;
+}
+.mainbox {
+  display: flex;
+  min-width: 1039px;
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 0.125rem 0.125rem 0;
+}
+.mainbox .column1 {
+  flex: 3;
+}
+.mainbox .column1 .panel {
+  position: relative;
+  height: 3.875rem;
+  overflow-y: hidden !important;
+  overflow-x: hidden !important;
+  border: 1px solid rgba(25, 186, 139, 0.17);
+  margin-bottom: 0.1875rem;
+  background: url(../images/line.png) rgba(255, 255, 255, 0.03);
+}
+.mainbox .column1 .panel .panel-footer:before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  border-left: 2px solid #ffffff;
+  border-top: 2px solid #fff;
+  content: "";
+}
+.mainbox .column1 .panel .panel-footer:after {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  content: "";
+}
+.mainbox .column1 .panel .chart {
+  height: 3.75rem;
+}
+.mainbox .column2 {
+  flex: 5;
+  margin: 0 0.125rem 0.1875rem;
+  overflow: hidden;
+}
+.mainbox .column2 .titleFrame {
+  background: rgba(101, 132, 226, 0.1);
+  padding: 0.1875rem;
+}
+.mainbox .column2 .titleFrame .titleItem {
+  position: relative;
+  border: 1px solid rgba(25, 186, 139, 0.17);
+}
+.mainbox .column2 .titleFrame .titleItem:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  width: 30px;
+  height: 10px;
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+}
+.mainbox .column2 .titleFrame .titleItem:after {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  content: "";
+  width: 30px;
+  height: 10px;
+  border-right: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+}
+.mainbox .column2 .titleFrame .titleItem ul {
+  display: flex;
+}
+.mainbox .column2 .titleFrame .titleItem ul li {
+  position: relative;
+  flex: 1;
+  line-height: 1rem;
+  font-size: 0.875rem;
+  color: #ffeb7b;
+  text-align: center;
+  font-family: "electronicFont";
+}
+.mainbox .column2 .container {
+  display: inline-flex;
+  background-color: #1e1048;
+  z-index: 0;
+  width: 100%;
+  position: auto;
+  height: 6.7rem;
+}
+.mainbox .column2 .container .tableInterface {
+  background-color: #1e1048;
+  position: relative;
+  top: 0px;
+  right: 0px;
+  width: 10%;
+  height: 3rem;
+  z-index: 2;
+  display: inline;
+}
+.mainbox .column2 .container .tableInterface .btn {
+  z-index: 3;
+  background-color: #1e1048;
+  color: white;
+  width: 100%;
+  position: relative;
+  height: 20%;
+  max-height: 40px;
+  cursor: pointer;
+}
+.mainbox .column2 .panel {
+  position: relative;
+  height: 3.875rem;
+  overflow-y: hidden !important;
+  overflow-x: hidden !important;
+  border: 1px solid rgba(25, 186, 139, 0.17);
+  margin-bottom: 0.1875rem;
+  background: url(../images/line.png) rgba(255, 255, 255, 0.03);
+}
+.mainbox .column2 .panel:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border-left: 2px solid #fff;
+  border-top: 2px solid #fff;
+  content: "";
+}
+.mainbox .column2 .panel:after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid #fff;
+  border-top: 2px solid #ffffff;
+  content: "";
+}
+.mainbox .column2 .panel .panel-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+.mainbox .column2 .panel .panel-footer:before {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 10px;
+  height: 10px;
+  border-left: 2px solid #5ece13;
+  border-bottom: 2px solid #fff;
+  content: "";
+}
+.mainbox .column2 .panel .panel-footer:after {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  content: "";
+}
+.mainbox .column2 .panel .button {
+  display: flex;
+  width: 100%;
+  height: 0.75rem;
+  overflow-y: hidden !important;
+  overflow-x: hidden !important;
+  background-color: rgba(33, 23, 75, 0.75);
+}
+.mainbox .column2 .panel .button .h2 {
+  color: #fff;
+  width: 15%;
+  position: relative;
+  height: 80%;
+  max-height: 40px;
+  font-size: 0.3rem;
+  text-align: center;
+  padding: 0.15rem 0.2rem;
+  cursor: pointer;
+}
+.mainbox .column2 .panel .button .h2:hover {
+  text-decoration: underline;
+  text-decoration-color: white;
+  color: white;
+  cursor: pointer;
+}
+.mainbox .column2 .panel .button .no2 {
+  color: #fff;
+  width: 15%;
+  position: relative;
+  height: 80%;
+  max-height: 40px;
+  font-size: 0.3rem;
+  text-align: center;
+  padding: 0.15rem 0.2rem;
+  cursor: pointer;
+}
+.mainbox .column2 .panel .button .no2:hover {
+  text-decoration: underline;
+  text-decoration-color: white;
+  color: white;
+  cursor: pointer;
+}
+.mainbox .column2 .panel .button .parameter {
+  color: #fff;
+  width: 20%;
+  position: relative;
+  height: 100%;
+  max-height: 40px;
+  font-size: 0.25rem;
+  text-align: center;
+  padding: 0.2rem 0.1rem;
+  cursor: pointer;
+}
+.mainbox .column2 .panel .button .parameter:hover {
+  text-decoration: underline;
+  text-decoration-color: white;
+  color: white;
+  cursor: pointer;
+}
+.mainbox .column2 .panel table {
+  table-layout: auto;
+  overflow-y: hidden !important;
+  overflow-x: hidden !important;
+  width: 90%;
+  margin-left: 40px;
+  margin-right: 20px;
+  border: 10px white;
+  border-collapse: collapse;
+  border-spacing: 0px;
+}
+.mainbox .column2 .panel table td {
+  overflow-y: hidden !important;
+  overflow-x: hidden !important;
+  font-size: 0.3rem;
+  height: 0.55rem;
+  max-height: 1rem;
+  overflow: scroll;
+  white-space: nowrap;
+  color: white;
+  -moz-text-overflow: ellipsis;
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+.mainbox .column3 {
+  flex: 3;
+}
+.mainbox .column3 .panel {
+  position: relative;
+  height: 3.875rem;
+  overflow-y: hidden !important;
+  overflow-x: hidden !important;
+  border: 1px solid rgba(25, 186, 139, 0.17);
+  margin-bottom: 0.1875rem;
+  background: url(../images/line.png) rgba(255, 255, 255, 0.03);
+}
+.mainbox .column3 .panel .panel-footer:before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  border-left: 2px solid #ffffff;
+  border-top: 2px solid #fff;
+  content: "";
+}
+.mainbox .column3 .panel .panel-footer:after {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  content: "";
+}
+.mainbox .chart {
+  height: 3.75rem;
+}
+/* 约束屏幕尺寸 */
+@media screen and (max-width: 1024px) {
+  html {
+    font-size: 42px !important;
+  }
+  .parameter {
+    font-size: 0.05rem;
+  }
+  .h2 {
+    font-size: 0.1rem;
+  }
+  .no2 {
+    font-size: 0.1rem;
+  }
+}
+@media screen and (min-width: 1920px) {
+  html {
+    font-size: 80px !important;
+  }
+}

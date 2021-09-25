@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--Browser Bar Name-->
+    <title>HKSTP</title>
+    <!--Browser Bar Favicon Image-->
+    <!--rel 可以是任何值，主要是说明后面的href是什么作用-->
+    <link rel="icon" href="../images/browserfavicon.ico" />
+    <!--Link to .css file-->
+    <link rel="stylesheet" href="../css/login.css" />
+  </head>
+
+  <!--Html body will load function draw() in hist_model.js-->
+  <body>
+    <!--JS Third Party Liba: Flexible.js for resizing all the elements-->
+    <script src="../js/flexible/flexible.js"></script>
+    <!--JS Homemade: RealTime Display -->
+    <script src="../js/time/realtime.js"></script>
+    <!-- Header -->
+
+    <header>
+      <p class="heading1">Real-time Air Quality Monitoring System</p>
+      <p class="heading2">Where Innovation Meets Quality Design</p>
+      <img class="tech-box" src="../images/front_tech.png" />
+      <div class="time"></div>
+    </header>
+
+    <!-- Mainbox includes 3 columns-->
+    <div class="mainbox">
+      <div class="column1"></div>
+      <div class="column2">
+        <div class="loginPanel">
+          <div class="panelTitle">Air Quality Monitor System Login</div>
+          <div class="formPanel" id="form-div">
+            <form id="login" method="post" action="/login">
+              <label class="usrLabel" for="username">Username: </label>
+              <input
+                type="text"
+                class="username"
+                id="username"
+                name="username"
+              /><br /><br /><br />
+              <label class="pwLabel" for="password">Password: </label>
+              <input id="password" class="password" name="password" /><br />
+              <input type="submit" class="logBtn" value="Login" />
+              <input type="reset" class="resetBtn" value="Reset" />
+            </form>
+          </div>
+          <div class="panel-footer"></div>
+        </div>
+      </div>
+      <div class="column3"></div>
+    </div>
+
+    <script type="text/javascript">
+      //Stopping ppl from viewing console
+      /* document.addEventListener(
+        "contextmenu",
+        function (e) {
+          e.preventDefault();
+        },
+        false
+      );
+      document.addEventListener("keydown", function (e) {
+        // USE THIS TO DISABLE CONTROL AND ALL FUNCTION KEYS
+        // if (e.ctrlKey || (e.keyCode>=112 && e.keyCode<=123)) {
+        // THIS WILL ONLY DISABLE CONTROL AND F12
+        if (e.ctrlKey || e.keyCode == 123) {
+          e.stopPropagation();
+          e.preventDefault();
+        }
+      });*/
+    </script>
+  </body>
+</html>

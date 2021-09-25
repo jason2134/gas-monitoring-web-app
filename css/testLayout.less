@@ -1,0 +1,387 @@
+// css 初始
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  li {
+    list-style: none;
+  }
+  
+  /*声明字体*/
+  @font-face {
+    font-family: electronicFont;
+    src: url(../font/DS-DIGIT.TTF);
+  }
+  
+  @font-face {
+    font-family: futura;
+    src: url(../font/futura-light.ttf);
+  }
+  
+  @font-face {
+    font-family: futuraBook;
+    src: url(../font/Futura-Book.ttf);
+  }
+
+  body
+  {
+    background: url(../images/backgroundV3.jpg) no-repeat top center;
+
+    header 
+    {
+      min-width: 1039px;
+      max-width: 1920px;
+      width: 100%;
+      position: absolute; //他是父类，因此无论选择是absolute还是relative，都以左上角为起点。
+      height: 131px;
+      background-color: white;
+      background-size: 100% 100%;
+  
+      //<img class = "tech-box"> in testLayout.html
+      .tech-box {
+        position: absolute;
+        left: 80px;
+        top: 20px;
+        width: 80px;
+        height: 80px;
+      }
+      //<p class = heading 1> in testLayout.html
+      .heading1 {
+        font-family: "futuraBook";
+        position: absolute;       //这个position的设置先看heading1的父类，这里有父类header，所以这个heading1的起点就是header的起点
+        left: 175px;
+        top: 23px;
+        font-size: 32px;
+        color: black;
+        //font-weight: 100;
+        width: 712px;
+        height: 43px;
+      }
+      //<p class = heading 2> in testLayout.html
+      .heading2 {
+        font-family: "futura";
+        position: absolute;
+        left: 175px;
+        top: 68px;
+        font-size: 16px;
+        color: black;
+        width: 300px;
+        height: 28px;
+        //line-height: 1rem;
+        font-weight: 100;
+      }
+  
+      //<div class="navBar"> in testLayout.html
+      .navBar 
+      {
+        position: absolute; //navBar 位置参考点 is the same as .header，也就是左上角
+        top: 100px;         //通过top的设置，navBar自身的起始点变成：top:100px（相对navBar位置参考点而言）
+        height: 40px;       
+        width: 100%;        //the width of navBar is the same as .header
+        background-color: rgba(239, 239, 239, 1);
+  
+        //标签是navBarHome inside <div class="navBar">
+        navBarHome {
+          font-family: Helvetica; //字体
+          text-align: left;       //字对齐方式
+          float: left;
+          position: absolute;     //字位置参考点继承了navBar自身的起始点。（也就是以top：100px作为字所在框的位置参考点）
+          left: 86px;             //字相对字的位置参考点的相对位置。
+          padding: 8px 20px;      //字的padding程度, 只写一个说明：8 px是字所在框上下和字距离8px；要是写两个 8 40: 40px是字所在框左右和字距离40px
+          font-size: 20px;        //字大小
+          color: black;         //字颜色
+          font-weight: normal;    //字加粗程度
+          text-decoration: none;     
+        }
+  
+        //标签是navBarUs inside <div class="navBar">
+        navBarUs {
+          font-family: Helvetica;
+          text-align: left;
+          float: left;
+          position: absolute;
+          left:206px;
+          padding: 8px 20px;
+          font-size: 20px;     
+          color: black;
+          font-weight: normal;
+          text-decoration: none;     
+        }
+  
+        //标签是navBarAir inside <div class="navBar">
+        navBarAir {
+          font-family: Helvetica;
+          text-align: left;
+          float: left;
+          position: absolute;
+          left:316px;
+          padding: 8px 40px;
+          font-size: 20px;
+          color: black;
+          font-weight: normal;
+          text-decoration: none;   
+        }
+        
+        //Logic of creating a dropdown menu: 
+        //.dropdown -> .dropbtn -> .dropdown-content -> differnet information u wanna add
+        //<div class="dropdown"> in testLayout.html  
+        .dropdown 
+        {
+          font-family: Helvetica;
+          position:relative;        //以.navBar的自身起始点（top = 100 px， left = 0 px）作为.dropdown的起点
+          display: inline-block;    //只用block会占据整行宽度，只用inline不能设置padding的上下长度，所以必须要inline-block
+          left:600px;
+          top:0px;
+          padding: 8px 20px;
+          font-size: 20px;
+          font-weight: normal;
+          text-decoration: none;
+        }
+        //<div class="dropbtn", id = "navBarHistory"> in testLayout.html 
+        #navBarHistory
+        {
+          font-family: Helvetica;
+          background-color: rgb(239, 239, 239, 1);
+          cursor: pointer;
+          text-align: center;
+          color: black;
+          font-weight: normal; 
+          text-decoration: none;     
+        }
+        //<div class="dropdown-content"> in testLayout.html 
+        .dropdown-content 
+        {
+          display: none;
+          position: absolute;   //这个的位置参考点就是.dropdown的起始点
+          top: 40px;            //调整下拉菜单相对于.dropdown的位置
+          left: 0px;
+          background-color: rgb(235, 91, 91);
+          min-width: 200px;
+          box-shadow: 0px 12px 16px 0px rgba(0, 0, 0, 0);
+          z-index: 1;
+          // padding: 12px 16px;    
+          font-family: inherit; /* Important for vertical align on mobile phones */        
+          //<span class="node"> in testDropdown.html，设置span class 的内容的颜色，每一个span class占据的大小
+        
+        }
+        .node {
+          float: none;
+          padding: 12px 16px;   //上下padding 12px，左右padding 16 px
+          color: rgb(0, 0, 0);
+          text-decoration: none;
+          display: block;
+          text-align: left;
+          }
+          // add hover animation from .dropdown to different classes or id for different .less
+        .dropdown:hover {
+              background-color: rgb(229, 229, 229, 1);
+          }
+        .dropdown:hover #navBarHistory{
+              background-color: rgb(229, 229, 229, 1);
+          }
+        .dropdown:hover .dropdown-content {
+              display: block;
+              cursor: pointer;
+          } 
+        .node:hover {background-color: rgb(207, 207, 201)}
+      }
+    }   
+
+    .mainbox
+    {
+        display:flex;
+        position:relative;
+        top:150px;
+        .column1
+        {
+            flex:3;
+            .panel {
+                position: relative;
+                height: 3.875rem;
+                //height: 12rem;
+                overflow-y: hidden !important; // important overides all other classes
+                overflow-x: hidden !important;
+                border: 1px solid rgba(25, 186, 139, 0.17);
+                margin: 0.1875rem;
+                background: url(../images/line.png) rgba(255, 255, 255, 0.03);
+                &:before {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 10px;
+                    height: 10px;
+                    border-left: 2px solid #fff;
+                    border-top: 2px solid #fff;
+                    content: "";
+                            }
+                  &:after {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    width: 10px;
+                    height: 10px;
+                    border-right: 2px solid #fff;
+                    border-top: 2px solid #ffffff;
+                    content: "";
+                            }
+                .panel-footer 
+                {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    &:before {
+                        position: absolute;
+                        left: 0;
+                        bottom: 0;
+                        width: 10px;
+                        height: 10px;
+                        border-left: 2px solid rgb(94, 206, 19);
+                        border-bottom: 2px solid #fff;
+                        content: "";
+                            }
+                    &:after {
+                        position: absolute;
+                        bottom: 0;
+                        right: 0;
+                        width: 10px;
+                        height: 10px;
+                        border-right: 2px solid #fff;
+                        border-bottom: 2px solid #fff;
+                        content: "";
+                            }
+                }              
+            }
+            
+            
+        }
+        .column2
+        {
+            flex:5;
+            .panel {
+                position: relative;
+                height: 3.875rem;
+                //height: 12rem;
+                overflow-y: hidden !important; // important overides all other classes
+                overflow-x: hidden !important;
+                border: 1px solid rgba(25, 186, 139, 0.17);
+                margin: 0.1875rem;
+                background: url(../images/line.png) rgba(255, 255, 255, 0.03);
+                &:before {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 10px;
+                    height: 10px;
+                    border-left: 2px solid #fff;
+                    border-top: 2px solid #fff;
+                    content: "";
+                            }
+                  &:after {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    width: 10px;
+                    height: 10px;
+                    border-right: 2px solid #fff;
+                    border-top: 2px solid #ffffff;
+                    content: "";
+                            }
+                            .panel-footer 
+            {
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              width: 100%;
+              &:before {
+                  position: absolute;
+                  left: 0;
+                  bottom: 0;
+                  width: 10px;
+                  height: 10px;
+                  border-left: 2px solid rgb(94, 206, 19);
+                  border-bottom: 2px solid #fff;
+                  content: "";
+                      }
+              &:after {
+                  position: absolute;
+                  bottom: 0;
+                  right: 0;
+                  width: 10px;
+                  height: 10px;
+                  border-right: 2px solid #fff;
+                  border-bottom: 2px solid #fff;
+                  content: "";
+                      }
+            }
+            }
+            
+           
+        }
+        .column3
+        {
+            flex:3;
+            .panel {
+                position: relative;
+                height: 3.875rem;
+                //height: 12rem;
+                overflow-y: hidden !important; // important overides all other classes
+                overflow-x: hidden !important;
+                border: 1px solid rgba(25, 186, 139, 0.17);
+                margin:0.1875rem;
+                background: url(../images/line.png) rgba(255, 255, 255, 0.03);
+                &:before {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 10px;
+                    height: 10px;
+                    border-left: 2px solid #fff;
+                    border-top: 2px solid #fff;
+                    content: "";
+                            }
+                  &:after {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    width: 10px;
+                    height: 10px;
+                    border-right: 2px solid #fff;
+                    border-top: 2px solid #ffffff;
+                    content: "";
+                            }
+                            .panel-footer 
+            {
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              width: 100%;
+              &:before {
+                  position: absolute;
+                  left: 0;
+                  bottom: 0;
+                  width: 10px;
+                  height: 10px;
+                  border-left: 2px solid rgb(94, 206, 19);
+                  border-bottom: 2px solid #fff;
+                  content: "";
+                      }
+              &:after {
+                  position: absolute;
+                  bottom: 0;
+                  right: 0;
+                  width: 10px;
+                  height: 10px;
+                  border-right: 2px solid #fff;
+                  border-bottom: 2px solid #fff;
+                  content: "";
+                      }
+            }
+            }
+
+            
+        }
+    }
+    
+  }

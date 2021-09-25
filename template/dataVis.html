@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--Browser Bar Name-->
+    <title>HKSTP</title>
+    <!--Browser Bar Favicon Image-->
+    <link rel="icon" href="../images/browserfavicon.ico">
+    <!--Link to .css file-->
+    <link rel="stylesheet" href="../css/dataVis.css" />
+  </head>
+ 
+  <!--Html body will load function draw() in model.js-->
+  <body onload="draw();">
+    <!--JS Third Party Liba: 3D packages-->
+    <script src="../js/three/three.js"></script>
+    <script src="../js/three/three.min.js"></script>
+    <script src="../js/three/STLLoader.js"></script>
+    <script src="../js/three/TextureLoader.js"></script>
+    <script src="../js/three/Sprite.js"></script>
+    <script src="../js/three/OrbitControls.js"></script>
+    <script src="../js/three/dat.gui.min.js"></script>
+    <script src="../js/three/interaction/three.interaction.js"></script>
+    <!--JS Third Party Liba: stats.min.js for enabling refresh 3D frames per second-->
+    <script src="../js/stat/stats.min.js"></script>
+    <!--JS Third Party Liba: Flexible.js for resizing all the elements-->
+    <script src="../js/flexible/flexible.js"></script>
+    <!--JS Third Party Liba: JQuery -->
+    <script src="../js/jquery/jquery.js"></script>
+    <script src="http://www.itxst.com/package/jquery-3.3.1/jquery.js"></script>
+    <!--JS Third Party Liba: Echart -->
+    <script src="../js/echart/echarts.min.js"></script>
+    <!--JS Homemade-->
+    <!--JS Homemade: RealTime Display -->
+    <script src="../js/time/realtime.js"></script>
+    <!-- Header -->
+    <!--navBar is a class, while navBarHome is a tag, they hv different in dataVis.less-->
+    <header>
+      <p class="heading1">Real-time Air Quality Monitoring System</p>
+      <p class="heading2">Where Innovation Meets Quality Design</p>
+      <img class="tech-box" src="../images/front_tech.png">
+      <div class="time"></div>
+      <div class="navBar">
+        <navBarHome>Home</navBarHome> 
+        <navBarUs>About us</navBarUs>
+        <navBarAir>Air Quality Monitoring</navBarAir>
+        <div class="dropdown">
+          <div class="dropbtn", id = "navBarHistory">
+              History Monitoring
+          </div>
+          <div class="dropdown-content">
+              <span class = "node">node1</span>
+              <span class = "node">node2</span>
+              <span class = "node">node3</span>
+              <span class = "node">node4</span>
+          </div>
+        </div>     
+        <!-- <a href="https://www.youtube.com/" class="navBarHistory">History Monitoring</a> -->
+      </div>     
+    </header> 
+
+    <!-- Mainbox includes 3 columns-->
+    <div class="mainbox">
+      <!--column 1-->
+      <!--Size are tuned in dataVis.css with respect to the class, or id-->
+      <!--class="panel hydrogen" means it will inheritate both panel class and hydrogen class
+          but for now it doesnt have hydrogen class in dataVis.css, only has panel class.
+          hydrogen class is used as document.querySelector in js/chart/node1/h1.js-->
+      <div class="column1">
+          <!--Hydrogen-->
+          <div class="panel hydrogen">
+          <div class="chart"></div>
+          <div class="panel-footer"></div> <!-- 这个是图表上那些白色的角-->
+          </div>
+          <!--Nitrogen Dioxide-->
+          <div class="panel nitrogenOxide">
+          <div class="chart"></div>
+          <div class="panel-footer"></div>
+          </div>
+          <!--Formaldehyde-->
+          <div class="panel fa">
+          <div class="chart"></div>
+          <div class="panel-footer"></div>
+          </div>
+      </div>
+
+      <!--column 2 -->
+      <div class="column2">
+        <!-- Dashboard Title -->
+        <div class="titleFrame">
+          <div class="titleItem">
+            <ul>
+              <li id="dashboardTitle">AIR QUALITY MONITORING</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Selection of Floor Plan -->
+        <!--class container, class tableInterface, and class button in dataVis.less -->
+        <!--onClickOverall(), onClickF1(), onClickF2(), onClickF3() are defined in model.js-->
+        <div class="container" id = "c">
+          <span class="tableInterface">
+            <button class="btn" onclick="onClickOverall()">
+              <img src="../images/layer.ico" />
+            </button>
+            <button class="btn" onclick="onClickF1()">F1</button>
+            <button class="btn" onClick="onClickF2()">F2</button>
+            <button class="btn" onclick="onClickF3()">F3</button>
+          </span>
+        </div>
+
+        <!-- Table Initilization -->
+        <!--class panel in dataVis.less -->
+        <div class="panel">
+          <!--Table Button Onclick Event Initilization-->
+          <!--These Onclick() functions are defined in ops.js, if we press the buttons on the table, it will change gasState variable by these Onclick functions-->
+          <!--gasState will defined what to call in tableOnClickEvent() function in ops.js-->
+          <div class="button">
+            <span class="h2" onclick="h2Onclick()">H<sub>2<sub></span>
+            <span class="no2"onclick="NO2Onclick()">NO<sub>2<sub></span>
+            <span class="parameter" onclick="faOnclick()">Formaldehyde</span>
+            <span class="parameter" onclick="TolueneOnclick()">Toluene</span>
+            <span class="parameter" onclick="TempOnclick()">Temperature</span>
+            <span class="parameter" onclick="HumidOnclick()">Humidity</span>
+          </div>
+          
+          <!--Table Establishment: 5 rows 3 columns, has scrolling ability-->
+          <!--table in dataVis.less-->
+          <!--td in dataVis.less-->
+          <table>
+            <thead>
+              <tr id="tableHeader">
+                <td>Ranking</td>
+                <td id="type">Position</td>
+                <td id="unit">Gas Concentration</td>
+              </tr>
+            </thead>
+            <tbody id="tableBody">
+              <tr>
+                <td>1<sup>st</sup></td>
+                <td id="1st">loading...</td>
+                <td id="1st_data">loading...</td>
+              </tr>
+              <tr>
+                <td>2<sup>nd</sup></td>
+                <td id="2nd">loading...</td>
+                <td id="2nd_data">loading...</td>
+              </tr>
+              <tr>
+                <td>3<sup>rd</sup></td>
+                <td id="3rd">loading...</td>
+                <td id="3rd_data">loading...</td>
+              </tr>
+              <tr>
+                <td>4<sup>th</sup></td>
+                <td id="4th">loading...</td>
+                <td id="4th_data">loading...</td>
+              </tr>
+              <tr>
+                <td>5<sup>th</sup></td>
+                <td id="4th">loading...</td>
+                <td id="4th_data">loading...</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="panel-footer"></div>
+        </div>
+      </div>
+
+      <!--column 3-->
+      <div class="column3">
+      <!--Toluene-->
+        <div class="panel tol">
+          <div class="chart"></div>
+          <div class="panel-footer"></div>
+        </div>
+        <!--Tempersture & Humidity-->
+        <div class="panel tempHumid">
+          <div class="chart"></div>
+          <div class="panel-footer"></div>
+        </div>
+        <!--Bar Chart for the 4 gases-->
+        <div class="panel bar">
+          <div class="chart"></div>
+          <div class="panel-footer"></div>
+        </div>
+      </div>
+    </div>
+   
+   <!--JS Declaring Variables for ops.js and getData.js-->
+   <script src="../js/ops/getVariable.js"></script> 
+    <!--JS Echart Node 1-->
+    <script src="../js/chart/node1/h1.js"></script>
+    <script src="../js/chart/node1/not1.js"></script>
+    <script src="../js/chart/node1/fa1.js"></script>
+    <script src="../js/chart/node1/tol1.js"></script>
+    <script src="../js/chart/node1/th1.js"></script>
+    <script src="../js/chart/node1/bar1.js"></script>
+    <!--JS Echart Node 2-->
+    <script src="../js/chart/node2/h2.js"></script>
+    <script src="../js/chart/node2/not2.js"></script>
+    <script src="../js/chart/node2/fa2.js"></script>
+    <script src="../js/chart/node2/tol2.js"></script>
+    <script src="../js/chart/node2/th2.js"></script>
+    <script src="../js/chart/node2/bar2.js"></script>
+    <!--JS Echart Node 3-->
+    <script src="../js/chart/node3/h3.js"></script>
+    <script src="../js/chart/node3/not3.js"></script>
+    <script src="../js/chart/node3/fa3.js"></script>
+    <script src="../js/chart/node3/tol3.js"></script>
+    <script src="../js/chart/node3/th3.js"></script>
+    <script src="../js/chart/node3/bar3.js"></script>
+    <!--JS Echart Node 4-->
+    <script src="../js/chart/node4/h4.js"></script>
+    <script src="../js/chart/node4/not4.js"></script>
+    <script src="../js/chart/node4/fa4.js"></script>
+    <script src="../js/chart/node4/tol4.js"></script>
+    <script src="../js/chart/node4/th4.js"></script>
+    <script src="../js/chart/node4/bar4.js"></script>
+    <!--JS Table Display and Ranking for 4 nodes-->
+    <script src="../js/table/table.js"></script>     
+    <!--JS Ajax Post from webtest.py(api) to echart/table/...-->
+    <script src="../js/ops/getData.js"></script>
+    <!--JS Data Request Operation-->  
+    <script src="../js/ops/ops.js"></script> 
+    <!--JS 3D Model.js, Model Onclick Event to load on datavis.html-->
+    <!--JS 3D Render.js, Render 3D models on datavis.html-->
+    <script src="../js/model/render.js"></script>
+    <script src="../js/model/model.js"></script>   
+  </body>
+</html>

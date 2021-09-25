@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--Browser Bar Name-->
+    <title>HKSTP</title>
+    <!--Browser Bar Favicon Image-->
+    <!--rel 可以是任何值，主要是说明后面的href是什么作用-->
+    <link rel="icon" href="../images/browserfavicon.ico" />
+    <!--Link to .css file-->
+    <link rel="stylesheet" href="../css/admin.css" />
+  </head>
+
+  <!--Html body will load function draw() in hist_model.js-->
+  <body>
+    <!--JS Third Party Liba: Flexible.js for resizing all the elements-->
+    <script src="../js/flexible/flexible.js"></script>
+    <!--JS Third Party Liba: JQuery -->
+    <script src="../js/jquery/jquery.js"></script>
+    <script src="http://www.itxst.com/package/jquery-3.3.1/jquery.js"></script>
+    <!--JS Third Party Liba: Echart -->
+    <script src="../js/echart/echarts.min.js"></script>
+    <!--JS Homemade: RealTime Display -->
+    <script src="../js/time/realtime.js"></script>
+    <!-- Header -->
+    <!--navBar is a class, while navBarHome is a tag, they hv different in historyData.less-->
+    <!-- refreshhistNodex() are called in histOpt.js -->
+    <header>
+      <p class="heading1">Real-time Air Quality Monitoring System</p>
+      <p class="heading2">Where Innovation Meets Quality Design</p>
+      <img class="tech-box" src="../images/front_tech.png" />
+      <div class="time"></div>
+      <div class="navBar">
+        <navBarHome>Home</navBarHome>
+        <navBarUs>About us</navBarUs>
+        <navBarAir>Air Quality Monitoring</navBarAir>
+        <div class="dropdown">
+          <div class="dropbtn" , id="navBarHistory">History Monitoring</div>
+          <div class="dropdown-content">
+            <span class="node" onClick="refreshhistNode1()">Node 1</span>
+            <span class="node" onClick="refreshhistNode2()">Node 2</span>
+            <span class="node" onClick="refreshhistNode3()">Node 3</span>
+            <span class="node" onClick="refreshhistNode4()">Node 4</span>
+            <span class="node" onClick="refreshhistOverall()">Overall</span>
+          </div>
+        </div>
+      </div>
+
+      <!--Time From Container to enter starting date; Time To Container to enter end date-->
+      <!--This id='from' input value and id='to' input value will be obtained in selecttime.js-->
+      <!--Aftering obtaining "from" and "to" value in selecttime.js, they will be called in histOpt.js by triggering sendTimeRange() function in historyData.html-->
+      <div class="timeFromContainer">
+        <label for="from">From:</label>
+        <input
+          type="date"
+          id="from"
+          placeholder="dd/mm/yyyy"
+        /><!--Starting date belongs to <input id="from">; Data structure is date -->
+      </div>
+      <div class="timeToContainer">
+        <label for="to">To:</label>
+        <input
+          type="date"
+          id="to"
+          placeholder="dd/mm/yyyy"
+        /><!--End date belongs to <input id="to">; Data structure is date -->
+      </div>
+      <button class="timeButton" onClick="sendTimeRange()">
+        Send TimeRange
+      </button>
+      <!--sendTimeRange() function is in hist_opt.js -->
+      <button class="exportButton" onClick="exportOnClick()">Export</button>
+    </header>
+
+    <!-- Mainbox includes 3 columns-->
+    <div class="mainbox">
+      <!--column 1-->
+      <!--Size are tuned in historyData.css with respect to the class, or id-->
+      <!--class="panel hydrogen" means it will inheritate both panel class and hydrogen class
+          but for now it doesnt have hydrogen class in dataVis.css, only has panel class.
+          hydrogen class is used as document.querySelector in js/history/histChart/histNode1/histH1.js-->
+      <div class="column1">
+        <div class="panel hydrogen">
+          <div class="chart"></div>
+          <div class="panel-footer"></div>
+          <!-- 这个是图表上那些白色的角-->
+        </div>
+        <!--Nitrogen Dioxide-->
+        <div class="panel nitrogenOxide">
+          <div class="chart"></div>
+          <div class="panel-footer"></div>
+        </div>
+        <!--Formaldehyde-->
+        <div class="panel fa">
+          <div class="chart"></div>
+          <div class="panel-footer"></div>
+        </div>
+      </div>
+
+      <!--column 2-->
+      <div class="column1">
+        <!--Toluene-->
+        <div class="panel tol">
+          <div class="chart"></div>
+          <div class="panel-footer"></div>
+        </div>
+        <!--Temperature-->
+        <div class="panel temp">
+          <div class="chart"></div>
+          <div class="panel-footer"></div>
+        </div>
+        <!--Humidity-->
+        <div class="panel humid">
+          <div class="chart"></div>
+          <div class="panel-footer"></div>
+        </div>
+      </div>
+    </div>
+
+    <!--JS Homemade: History-->
+    <!--JS Homemade: obtain two timestamps of from and to in the input window of time in html-->
+    <script src="../js/time/selecttime.js"></script>
+    <!--JS Declaring Variables for hist_ops.js and postHist.js-->
+    <script src="../history/histOpt/histVariable.js"></script>
+    <!--JS Ajax Post request for history Data-->
+    <script src="../history/histOpt/histPost.js"></script>
+    <!--JS History Display Function Operation-->
+    <script src="../history/histOpt/histOpt.js"></script>
+    <!--JS declaring History Export Function Operation-->
+    <script src="../history/histExport/exportVariable.js"></script>
+    <!--JS History Export Operation-->
+    <script src="../history/histExport/exportOpt.js"></script>
+
+    <!--JS History Echart Node 1-->
+    <script src="../history/histChart/histNode1/histH1.js"></script>
+    <script src="../history/histChart/histNode1/histNOT1.js"></script>
+    <script src="../history/histChart/histNode1/histFA1.js"></script>
+    <script src="../history/histChart/histNode1/histTol1.js"></script>
+    <script src="../history/histChart/histNode1/histTemp1.js"></script>
+    <script src="../history/histChart/histNode1/histHumid1.js"></script>
+    <!--JS History Echart Node2-->
+    <script src="../history/histChart/histNode2/histH2.js"></script>
+    <script src="../history/histChart/histNode2/histNOT2.js"></script>
+    <script src="../history/histChart/histNode2/histFA2.js"></script>
+    <script src="../history/histChart/histNode2/histTol2.js"></script>
+    <script src="../history/histChart/histNode2/histTemp2.js"></script>
+    <script src="../history/histChart/histNode2/histHumid2.js"></script>
+    <!--JS History Echart Node3-->
+    <script src="../history/histChart/histNode3/histH3.js"></script>
+    <script src="../history/histChart/histNode3/histNOT3.js"></script>
+    <script src="../history/histChart/histNode3/histFA3.js"></script>
+    <script src="../history/histChart/histNode3/histTol3.js"></script>
+    <script src="../history/histChart/histNode3/histTemp3.js"></script>
+    <script src="../history/histChart/histNode3/histHumid3.js"></script>
+    <!--JS History Echart Node4-->
+    <script src="../history/histChart/histNode4/histH4.js"></script>
+    <script src="../history/histChart/histNode4/histNOT4.js"></script>
+    <script src="../history/histChart/histNode4/histFA4.js"></script>
+    <script src="../history/histChart/histNode4/histTol4.js"></script>
+    <script src="../history/histChart/histNode4/histTemp4.js"></script>
+    <script src="../history/histChart/histNode4/histHumid4.js"></script>
+    <!--JS History Overall Nodes Data Processing for Echart Display-->
+    <script src="../history/histChart/overall/overallhistProcH.js"></script>
+    <script src="../history/histChart/overall/overallhistProcNOT.js"></script>
+    <script src="../history/histChart/overall/overallhistProcFA.js"></script>
+    <script src="../history/histChart/overall/overallhistProcTol.js"></script>
+    <script src="../history/histChart/overall/overallhistProcTemp.js"></script>
+    <script src="../history/histChart/overall/overallhistProcHumid.js"></script>
+    <!--JS History Overall Nodes Echart Display-->
+    <script src="../history/histChart/overall/overallhistH.js"></script>
+    <script src="../history/histChart/overall/overallhistNOT.js"></script>
+    <script src="../history/histChart/overall/overallhistFA.js"></script>
+    <script src="../history/histChart/overall/overallhistTol.js"></script>
+    <script src="../history/histChart/overall/overallhistTemp.js"></script>
+    <script src="../history/histChart/overall/overallhistHumid.js"></script>
+  </body>
+</html>

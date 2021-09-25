@@ -1,0 +1,591 @@
+// css 初始
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+li {
+  list-style: none;
+}
+
+/*声明字体*/
+@font-face {
+  font-family: electronicFont;
+  src: url(../font/DS-DIGIT.TTF);
+}
+
+@font-face {
+  font-family: futura;
+  src: url(../font/futura-light.ttf);
+}
+
+@font-face {
+  font-family: futuraBook;
+  src: url(../font/Futura-Book.ttf);
+}
+
+//<body> in historyData.html
+body {
+  background: url(../images/backgroundV3.jpg) no-repeat top center;
+  line-height: 1.15;
+  //<header> in historyData.html
+  header {
+    min-width: 1039px;
+    max-width: 1920px;
+    width: 100%;
+    position: absolute; //他是父类，因此无论选择是absolute还是relative，都以左上角为起点。
+    height: 131px;
+    background-color: white;
+    background-size: 100% 100%;
+    //<img class = "tech-box"> in historyData.html, put the image inside a 80px*80px frame
+    .tech-box {
+      position: absolute;
+      left: 80px;
+      top: 20px;
+      width: 80px;
+      height: 80px;
+    }
+    //<p class = heading 1> in historyData.html
+    .heading1 {
+      font-family: "futuraBook";
+      position: absolute; //这个position的设置先看heading1的父类，这里有父类header，所以这个heading1的起点就是header的起点
+      left: 175px;
+      top: 23px;
+      font-size: 32px;
+      color: black;
+      //font-weight: 100;
+      width: 712px;
+      height: 43px;
+    }
+    //<p class = heading 2> in historyData.html
+    .heading2 {
+      font-family: "futura";
+      position: absolute;
+      left: 175px;
+      top: 68px;
+      font-size: 16px;
+      color: black;
+      width: 300px;
+      height: 28px;
+      //line-height: 1rem;
+      font-weight: 100;
+    }
+    //<div class = "time"> in historyData.html
+    .time {
+      position: absolute;
+      right: 12px; //这个设置就可以直接让<div class="time">以最右边作为起点，并且在距离最右边12px的位置放置这个time
+      top: 0px;
+      line-height: 0.5rem; //这里表示这个<div class="time">的上下间距都是0.5rem
+      //color: rgba(255, 255, 255, 0.7);
+      color: black;
+      font-size: 0.25rem;
+    }
+    .timeFromContainer {
+      position: absolute;
+      top: 24px;
+      right: 12px;
+      font-size: 12px;
+    }
+    .timeToContainer {
+      position: absolute;
+      top: 48px;
+      right: 12px;
+      font-size: 12px;
+    }
+    .timeButton {
+      position: absolute;
+      top: 80px;
+      right: 12px;
+      font-size: 12px;
+    }
+    .exportButton {
+      position: absolute;
+      top: 80px;
+      right: 150px;
+      font-size: 12px;
+    }
+    //<div class = "navBar"> in historyData.html
+    .navBar {
+      position: absolute; //navBar 位置参考点 is the same as .header，也就是左上角
+      top: 100px; //通过top的设置，navBar自身的起始点变成：top:100px（相对navBar位置参考点而言）
+      height: 40px;
+      width: 100%; //the width of navBar is the same as .header
+      background-color: rgba(239, 239, 239, 1);
+
+      //navBarHome
+      navBarHome {
+        font-family: Helvetica; //字体
+        text-align: left; //字对齐方式
+        float: left;
+        position: absolute; //字位置参考点继承了navBar自身的起始点。（也就是以top：100px作为字所在框的位置参考点）
+        left: 86px; //字相对字的位置参考点的相对位置。
+        padding: 8px 20px; //字的padding程度, 只写一个说明：8 px是字所在框上下和字距离8px；要是写两个 8 40: 40px是字所在框左右和字距离40px
+        font-size: 20px; //字大小
+        color: black; //字颜色
+        font-weight: normal; //字加粗程度
+        text-decoration: none;
+      }
+      //navBarUs
+      navBarUs {
+        font-family: Helvetica;
+        text-align: left;
+        float: left;
+        position: absolute;
+        left: 206px;
+        padding: 8px 20px;
+        font-size: 20px;
+        color: black;
+        font-weight: normal;
+        text-decoration: none;
+      }
+      //navBarAir
+      navBarAir {
+        font-family: Helvetica;
+        text-align: left;
+        float: left;
+        position: absolute;
+        left: 316px;
+        padding: 8px 40px;
+        font-size: 20px;
+        color: black;
+        font-weight: normal;
+        text-decoration: none;
+      }
+
+      //Logic of creating a dropdown menu:
+      //.dropdown -> .dropbtn -> .dropdown-content -> differnet information u wanna add
+      //<div class="dropdown"> in historyData.html
+      .dropdown {
+        font-family: Helvetica;
+        position: relative; //以.navBar的自身起始点（top = 100 px， left = 0 px）作为.dropdown的起点
+        display: inline-block; //只用block会占据整行宽度，只用inline不能设置padding的上下长度，所以必须要inline-block
+        left: 600px;
+        top: 0px;
+        padding: 8px 20px;
+        font-size: 20px;
+        font-weight: normal;
+        text-decoration: none;
+      }
+      //navBarHistory
+      #navBarHistory {
+        font-family: Helvetica;
+        text-align: center;
+        background-color: rgb(239, 239, 239, 1);
+        color: black;
+        font-weight: normal;
+        cursor: pointer;
+      }
+      //<div class="dropdown-content"> in historyData.html
+      .dropdown-content {
+        display: none;
+        position: absolute; //这个的位置参考点就是.dropdown的起始点
+        top: 40px; //调整下拉菜单相对于.dropdown的位置
+        left: 0px;
+        background-color: rgb(239, 239, 239);
+        min-width: 200px;
+        box-shadow: 0px 12px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        // padding: 12px 16px;
+        font-family: inherit; /* Important for vertical align on mobile phones */
+      }
+
+      //<span class="node"> in historyData.html，设置span class 的内容的颜色，每一个span class占据的大小
+      .node {
+        float: none;
+        padding: 12px 16px; //上下padding 12px，左右padding 16 px
+        color: rgb(0, 0, 0);
+        text-decoration: none;
+        display: block;
+        text-align: left;
+      }
+      // add hover animation from .dropdown to different classes or id for different .less
+      .dropdown:hover {
+        background-color: rgb(229, 229, 229, 1);
+      }
+      .dropdown:hover #navBarHistory {
+        background-color: rgb(229, 229, 229, 1);
+      }
+      .dropdown:hover .dropdown-content {
+        display: block;
+        cursor: pointer;
+      }
+      .node:hover {
+        background-color: rgb(207, 207, 201);
+      }
+    }
+  }
+
+  // <div class = "mainbox"> in historyData.html
+  // need to set position as relative, otherwise flex cannot work well.
+  .mainbox {
+    display: flex;
+    position: relative;
+    top: 150px;
+    padding: 0.125rem 0.125rem;
+    //<div class = "column1"> in historyData.html
+    .column1 {
+      flex: 3;
+      //<div class="panel"> in historyData.html, this is a frame filled with line.png
+      .panel {
+        position: relative;
+        height: 3.875rem;
+        overflow-y: hidden !important; // important overides all other classes
+        overflow-x: hidden !important;
+        border: 1px solid rgba(25, 186, 139, 0.17);
+        margin-bottom: 0.1875rem;
+        background: url(../images/line.png) rgba(255, 255, 255, 0.03);
+        //<div class="panel-footer"> in historyData.html
+        //draw footers at top-left and bottom-right corners of the panel
+        /*:before and :after are fake elements, which adds contents in front
+        of and behind a content of div respectively
+        eg. div content = Love , :before = I , :after = You
+        the result will be : I Love You
+        */
+        .panel-footer {
+          &:before {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 10px;
+            height: 10px;
+            border-left: 2px solid rgb(255, 255, 255);
+            border-top: 2px solid #fff;
+            content: "";
+          }
+          &:after {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 10px;
+            height: 10px;
+            border-right: 2px solid #fff;
+            border-bottom: 2px solid #fff;
+            content: "";
+          }
+        }
+        .chart {
+          height: 3.75rem;
+        }
+      }
+    }
+
+    //<div class = "column2"> in historyData.html
+    .column2 {
+      flex: 5; //This directly defines width of each class in column 2. So only height needs to be set.
+      margin: 0 0.125rem 0.1875rem; // top:0 rem, left and right all:0.125rem, bottom: 0.1875rem
+      overflow: hidden;
+      // Dashboard Title
+      // Title Frame for drawing a frame
+      .titleFrame {
+        background: rgba(101, 132, 226, 0.1);
+        padding: 0.1875rem;
+        // Title item for drawing a border that is included into the frame
+        .titleItem {
+          position: relative;
+          border: 1px solid rgba(25, 186, 139, 0.17);
+          //This is used to draw 边框线，top有一条，left有一条，宽度都是2px
+          //&表示引用当前的父选择器，这里就是指引用了titleitem，titleitem.before表示titleitem左侧
+          &:before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            content: "";
+            width: 30px;
+            height: 10px;
+            border-top: 2px solid #ffffff;
+            border-left: 2px solid #ffffff;
+          }
+          &:after {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            content: "";
+            width: 30px;
+            height: 10px;
+            border-right: 2px solid #ffffff;
+            border-bottom: 2px solid #ffffff;
+          }
+          //<ul> dashboardTitle in column 2
+          //modify dashBoardTitle font size
+          ul {
+            display: flex;
+            li {
+              position: relative;
+              flex: 1;
+              line-height: 1rem; //行距
+              font-size: 0.75rem;
+              color: #ffeb7b;
+              text-align: center;
+              font-family: "electronicFont";
+            }
+          }
+        }
+      }
+
+      //For 3D map and selection bar in column 2 top.
+      //container includes the 3D map
+      .container {
+        display: inline-flex;
+        background-color: #1e1048;
+        z-index: 0;
+        width: 100%;
+        position: auto;
+        height: 6.7rem;
+        //tableInterface is the selection bar of 3D map in column 2
+        .tableInterface {
+          background-color: #1e1048;
+          position: relative;
+          top: 0px;
+          right: 0px;
+          width: 10%;
+          height: 3rem;
+          z-index: 2;
+          display: inline;
+          .btn {
+            z-index: 3;
+            background-color: #1e1048;
+            color: white;
+            width: 100%;
+            position: relative;
+            height: 20%;
+            max-height: 40px;
+            cursor: pointer;
+          }
+        }
+      }
+
+      //<div class="panel"> in historyData.html for table
+      .panel {
+        position: relative;
+        height: 3.875rem;
+        //height: 12rem;
+        overflow-y: hidden !important; // important overides all other classes
+        overflow-x: hidden !important;
+        border: 1px solid rgba(25, 186, 139, 0.17);
+        margin-bottom: 0.1875rem;
+        background: url(../images/line.png) rgba(255, 255, 255, 0.03);
+
+        // draw footer at two top corners of the panel
+        &:before {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 10px;
+          height: 10px;
+          border-left: 2px solid #fff;
+          border-top: 2px solid #fff;
+          content: "";
+        }
+        &:after {
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 10px;
+          height: 10px;
+          border-right: 2px solid #fff;
+          border-top: 2px solid #ffffff;
+          content: "";
+        }
+        // draw footer at two bottom corners of the panel
+        .panel-footer {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          &:before {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 10px;
+            height: 10px;
+            border-left: 2px solid rgb(94, 206, 19);
+            border-bottom: 2px solid #fff;
+            content: "";
+          }
+          &:after {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 10px;
+            height: 10px;
+            border-right: 2px solid #fff;
+            border-bottom: 2px solid #fff;
+            content: "";
+          }
+        }
+
+        //<div class="button" for table buttons including H2, NO2, ...
+        .button {
+          display: flex;
+          width: 100%;
+          height: 0.75rem;
+          overflow-y: hidden !important;
+          overflow-x: hidden !important;
+          background-color: rgba(33, 23, 75, 0.75);
+          //<span class="h2"> for H2 button
+          .h2 {
+            color: #fff;
+            width: 15%;
+            position: relative;
+            height: 80%;
+            max-height: 40px;
+            font-size: 0.3rem;
+            text-align: center;
+            padding: 0.15rem 0.2rem;
+            cursor: pointer;
+          }
+          .h2:hover {
+            text-decoration: underline;
+            text-decoration-color: white;
+            color: white;
+            cursor: pointer;
+          }
+          //<span class="no2"> for no2 button
+          .no2 {
+            color: #fff;
+            width: 15%;
+            position: relative;
+            height: 80%;
+            max-height: 40px;
+            font-size: 0.3rem;
+            text-align: center;
+            padding: 0.15rem 0.2rem;
+            cursor: pointer;
+          }
+          .no2:hover {
+            //hover defines the incidents when cursor is on top of the hovered class
+            text-decoration: underline;
+            text-decoration-color: white;
+            color: white;
+            cursor: pointer;
+          }
+          //<span class="parameter"> for other buttons in the table
+          .parameter {
+            color: #fff;
+            width: 20%;
+            position: relative;
+            height: 100%;
+            max-height: 40px;
+            font-size: 0.25rem;
+            text-align: center;
+            padding: 0.2rem 0.1rem;
+            cursor: pointer;
+          }
+          .parameter:hover {
+            text-decoration: underline;
+            text-decoration-color: white;
+            color: white;
+            cursor: pointer;
+          }
+        }
+
+        // <table> in historyData.html
+        table {
+          overflow-y: hidden !important;
+          overflow-x: hidden !important;
+          width: 90%;
+          margin-left: 5%;
+          margin-right: 5%; //width + margin-left + margin-right = 100% of column 2 flex
+          border-collapse: collapse;
+          //<thead> in historyData.html
+          thead {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+            color: #ffffff;
+            font-size: 18px;
+            text-align: center;
+            border-bottom: 1px solid white;
+          }
+          //<tbody> in historyData.html
+          tbody {
+            display: block; //tbody必须要设置成一个block（一个固定方块，height是100px），如果设置成table，显示在html上将会以table形式（整个表格全部显示）
+            height: 140px; //这是tbody的高度
+            overflow-y: scroll;
+            overflow-x: hidden;
+            //<tr> in historyData.html
+            tr {
+              width: 100%;
+              display: table;
+              table-layout: fixed;
+              text-align: center;
+              border-bottom: 1px solid white;
+              overflow-y: hidden !important;
+              overflow-x: hidden !important;
+              font-size: 0.2rem;
+              height: 0.55rem;
+              max-height: 1rem;
+              overflow: scroll;
+              color: white;
+              // -moz-text-overflow: ellipsis;
+              // -ms-text-overflow: ellipsis;
+              // -o-text-overflow: ellipsis;
+              text-overflow: ellipsis;
+            }
+          }
+        }
+      }
+    }
+
+    //<div class = "column3"> in historyData.html
+    .column3 {
+      flex: 3;
+      //<div class="panel"> in historyData.html
+      .panel {
+        position: relative;
+        height: 3.875rem;
+        overflow-y: hidden !important; // important overides all other classes
+        overflow-x: hidden !important;
+        border: 1px solid rgba(25, 186, 139, 0.17);
+        margin-bottom: 0.1875rem;
+        background: url(../images/line.png) rgba(255, 255, 255, 0.03);
+        .panel-footer {
+          &:before {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 10px;
+            height: 10px;
+            border-left: 2px solid rgb(255, 255, 255);
+            border-top: 2px solid #fff;
+            content: "";
+          }
+          &:after {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 10px;
+            height: 10px;
+            border-right: 2px solid #fff;
+            border-bottom: 2px solid #fff;
+            content: "";
+          }
+        }
+      }
+    }
+    .chart {
+      height: 3.75rem;
+    }
+  }
+}
+
+/* 约束屏幕尺寸 */
+@media screen and (max-width: 1024px) {
+  html {
+    font-size: 42px !important;
+  }
+  .parameter {
+    font-size: 0.05rem;
+  }
+  .h2 {
+    font-size: 0.1rem;
+  }
+  .no2 {
+    font-size: 0.1rem;
+  }
+}
+@media screen and (min-width: 1920px) {
+  html {
+    font-size: 80px !important;
+  }
+}

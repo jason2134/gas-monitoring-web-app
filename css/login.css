@@ -1,0 +1,330 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+li {
+  list-style: none;
+}
+/*声明字体*/
+@font-face {
+  font-family: electronicFont;
+  src: url(../font/DS-DIGIT.TTF);
+}
+@font-face {
+  font-family: futura;
+  src: url(../font/futura-light.ttf);
+}
+@font-face {
+  font-family: futuraBook;
+  src: url(../font/Futura-Book.ttf);
+}
+body {
+  background: url(../images/backgroundV3.jpg) no-repeat top center;
+  line-height: 1.15;
+}
+body header {
+  min-width: 1039px;
+  max-width: 1920px;
+  width: 100%;
+  position: absolute;
+  height: 131px;
+  background-color: white;
+  background-size: 100% 100%;
+}
+body header .tech-box {
+  position: absolute;
+  left: 80px;
+  top: 20px;
+  width: 80px;
+  height: 80px;
+}
+body header .heading1 {
+  font-family: "futuraBook";
+  position: absolute;
+  left: 175px;
+  top: 23px;
+  font-size: 32px;
+  color: black;
+  width: 712px;
+  height: 43px;
+}
+body header .heading2 {
+  font-family: "futura";
+  position: absolute;
+  left: 175px;
+  top: 68px;
+  font-size: 16px;
+  color: black;
+  width: 300px;
+  height: 28px;
+  font-weight: 100;
+}
+body header .time {
+  position: absolute;
+  right: 12px;
+  top: 0px;
+  line-height: 0.5rem;
+  color: black;
+  font-size: 0.25rem;
+}
+body header .timeFromContainer {
+  position: absolute;
+  top: 24px;
+  right: 12px;
+  font-size: 12px;
+}
+body header .timeToContainer {
+  position: absolute;
+  top: 48px;
+  right: 12px;
+  font-size: 12px;
+}
+body header .timeButton {
+  position: absolute;
+  top: 80px;
+  right: 12px;
+  font-size: 12px;
+}
+body header .exportButton {
+  position: absolute;
+  top: 80px;
+  right: 150px;
+  font-size: 12px;
+}
+body header .navBar {
+  position: absolute;
+  top: 100px;
+  height: 40px;
+  width: 100%;
+  background-color: #efefef;
+}
+body header .navBar navBarHome {
+  font-family: Helvetica;
+  text-align: left;
+  float: left;
+  position: absolute;
+  left: 86px;
+  padding: 8px 20px;
+  font-size: 20px;
+  color: black;
+  font-weight: normal;
+  text-decoration: none;
+}
+body header .navBar navBarUs {
+  font-family: Helvetica;
+  text-align: left;
+  float: left;
+  position: absolute;
+  left: 206px;
+  padding: 8px 20px;
+  font-size: 20px;
+  color: black;
+  font-weight: normal;
+  text-decoration: none;
+}
+body header .navBar navBarAir {
+  font-family: Helvetica;
+  text-align: left;
+  float: left;
+  position: absolute;
+  left: 316px;
+  padding: 8px 40px;
+  font-size: 20px;
+  color: black;
+  font-weight: normal;
+  text-decoration: none;
+}
+body header .navBar .dropdown {
+  font-family: Helvetica;
+  position: relative;
+  display: inline-block;
+  left: 600px;
+  top: 0px;
+  padding: 8px 20px;
+  font-size: 20px;
+  font-weight: normal;
+  text-decoration: none;
+}
+body header .navBar #navBarHistory {
+  font-family: Helvetica;
+  text-align: center;
+  background-color: #efefef;
+  color: black;
+  font-weight: normal;
+  cursor: pointer;
+}
+body header .navBar .dropdown-content {
+  display: none;
+  position: absolute;
+  top: 40px;
+  left: 0px;
+  background-color: #efefef;
+  min-width: 200px;
+  box-shadow: 0px 12px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  font-family: inherit;
+  /* Important for vertical align on mobile phones */
+}
+body header .navBar .node {
+  float: none;
+  padding: 12px 16px;
+  color: #000000;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+body header .navBar .dropdown:hover {
+  background-color: #e5e5e5;
+}
+body header .navBar .dropdown:hover #navBarHistory {
+  background-color: #e5e5e5;
+}
+body header .navBar .dropdown:hover .dropdown-content {
+  display: block;
+  cursor: pointer;
+}
+body header .navBar .node:hover {
+  background-color: #cfcfc9;
+}
+body .mainbox {
+  display: flex;
+  position: relative;
+  top: 150px;
+  padding: 0.125rem 0.125rem;
+}
+body .mainbox .column1 {
+  flex: 1;
+  height: 11rem;
+}
+body .mainbox .column2 {
+  flex: 5;
+}
+body .mainbox .column2 .loginPanel {
+  position: relative;
+  top: 0.9rem;
+  background-color: #1e1048;
+  height: 9.5rem;
+}
+body .mainbox .column2 .loginPanel .panelTitle {
+  background: url(../images/line.png);
+  padding-top: 0.1rem;
+  position: relative;
+  line-height: 1rem;
+  font-size: 1.1rem;
+  color: #ffeb7b;
+  text-align: center;
+  font-family: futura;
+}
+body .mainbox .column2 .loginPanel .formPanel {
+  padding: 0.5rem;
+}
+body .mainbox .column2 .loginPanel .formPanel .usrLabel {
+  color: #ffeb7b;
+  font-size: 0.4rem;
+  font-family: futura;
+}
+body .mainbox .column2 .loginPanel .formPanel .username {
+  align-self: center;
+  width: 10rem;
+  height: 1rem;
+  font-size: 0.5rem;
+}
+body .mainbox .column2 .loginPanel .formPanel .pwLabel {
+  padding-left: 0.3rem;
+  color: #ffeb7b;
+  font-size: 0.4rem;
+  font-family: futura;
+}
+body .mainbox .column2 .loginPanel .formPanel .password {
+  align-self: center;
+  width: 10rem;
+  height: 1rem;
+  font-size: 0.5rem;
+}
+body .mainbox .column2 .loginPanel .formPanel .resetBtn {
+  position: relative;
+  top: 1rem;
+  left: 7rem;
+  background: url(../images/backgroundV3.jpg);
+  color: #ffeb7b;
+  width: 4rem;
+  height: 2rem;
+  font-size: 0.7rem;
+  font-family: futura;
+}
+body .mainbox .column2 .loginPanel .formPanel .logBtn {
+  font-size: 0.7rem;
+  top: 1rem;
+  position: relative;
+  left: 1rem;
+  background: url(../images/backgroundV3.jpg);
+  color: #ffeb7b;
+  width: 4rem;
+  height: 2rem;
+  font-family: futura;
+}
+body .mainbox .column2 .loginPanel:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border-left: 2px solid #fff;
+  border-top: 2px solid #fff;
+  content: "";
+}
+body .mainbox .column2 .loginPanel:after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  content: "";
+  width: 20px;
+  height: 20px;
+  border-right: 2px solid #ffffff;
+  border-top: 2px solid #ffffff;
+}
+body .mainbox .column2 .loginPanel .panel-footer:before {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 20px;
+  height: 20px;
+  border-left: 2px solid #ffffff;
+  border-bottom: 2px solid #fff;
+  content: "";
+}
+body .mainbox .column2 .loginPanel .panel-footer:after {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  content: "";
+}
+body .mainbox .column3 {
+  flex: 1;
+  height: 11rem;
+}
+/* 约束屏幕尺寸 */
+@media screen and (max-width: 1024px) {
+  html {
+    font-size: 42px !important;
+  }
+  .parameter {
+    font-size: 0.05rem;
+  }
+  .h2 {
+    font-size: 0.1rem;
+  }
+  .no2 {
+    font-size: 0.1rem;
+  }
+}
+@media screen and (min-width: 1920px) {
+  html {
+    font-size: 80px !important;
+  }
+}

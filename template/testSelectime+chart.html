@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!--Browser Bar Name-->
+        <title>HKSTP</title>
+        <!--Browser Bar Favicon Image-->
+        <link rel="icon" href="../images/browserfavicon.ico">
+        <!--Link to .css file-->
+        <link rel="stylesheet" href="../css/testSelecttime+chart.css" />
+    </head>
+    <body>
+        <!--JS Third Party-->
+        <script src="../js/echart/echarts.min.js"></script>
+        <!--JS Homemade-->
+        <script src="../js/time/realtime.js"></script>   
+        <header>
+            <img class="tech-box" src="../images/front_tech.png">
+            <p class="heading1">Real-time Air Quality Monitoring System</p>
+            <p class="heading2">Where Innovation Meets Quality Design</p>
+            <div class="time"></div>
+            <!--Setup Timefrom-Enter container-->
+            <div class = "timeFromContainer">
+                <label for="from">From:</label>
+                <input type="date" id="from" placeholder="dd/mm/yyyy"/>
+            </div>
+            <!--Setup Timeto-Enter container-->
+            <div class="timeToContainer">    
+                <label for="to">To:</label>
+                <input type="date" id="to" placeholder="dd/mm/yyyy"/>
+            </div>
+            <!--Setup Time-Enter Activation button-->
+            <button class = "timebutton" onClick="getValue()">Test data</button> 
+            
+            <div class="navBar">
+                <navBarHome>Home</navBarHome> 
+                <navBarUs>About us</navBarUs>
+                <navBarAir>Air Quality Monitoring</navBarAir>
+                <div class="dropdown">
+                    <div class="dropbtn", id = "navBarHistory">
+                        History Monitoring
+                    </div>
+                    <div class="dropdown-content">
+                        <span class = "node">node1</span>
+                        <span class = "node">node2</span>
+                        <span class = "node">node3</span>
+                        <span class = "node">node4</span>
+                    </div>
+                </div>     
+            </div>     
+        </header>
+
+        <!--准备一个具有一定宽和高的Dom for refreshChart.js-->
+        <!-- style="width: 600px;height:400px;" -->
+        <div id="chart1"></div>
+        <script src="../js/test/refreshChart.js"></script>
+        <!-- 一定要放在getvalue（）函数调用之后，不然会因为先调用这个文件但是getValue无法执行因为还没有获取from和to的数值而报错。 -->
+        <script src="../js/time/selecttime.js"></script>
+    </body>
+</html>

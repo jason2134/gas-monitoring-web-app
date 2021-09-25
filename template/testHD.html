@@ -1,0 +1,28 @@
+<html>
+  <body></body>
+  <script>
+    function postTest() {
+      $.ajax({
+        type: "POST",
+        url: "/hwInfo",
+        contentType: "application/json",
+        success: function (response) {
+          var result = JSON.parse(response);
+          var data = result.data;
+          var time = result.time;
+          var id = result.id;
+          var stat = result.status;
+
+          console.log("data:" + data);
+          console.log("time:" + time);
+          console.log("ID:" + id);
+          console.log("status:" + stat);
+        },
+        error: function () {
+          alert("unsuccessful history request");
+        },
+      });
+    }
+    postTest();
+  </script>
+</html>

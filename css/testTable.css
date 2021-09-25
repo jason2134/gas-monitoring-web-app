@@ -1,0 +1,51 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+li {
+  list-style: none;
+}
+/*声明字体*/
+@font-face {
+  font-family: electronicFont;
+  src: url(../font/DS-DIGIT.TTF);
+}
+@font-face {
+  font-family: futura;
+  src: url(../font/futura-light.ttf);
+}
+@font-face {
+  font-family: futuraBook;
+  src: url(../font/Futura-Book.ttf);
+}
+body table {
+  width: 50%;
+  margin-right: 25%;
+  margin-left: 25%;
+  border-collapse: collapse;
+}
+body table thead {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  text-align: center;
+  font-size: 0.625rem;
+}
+body table tbody {
+  display: block;
+  height: 50px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+body table tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  border-bottom: 1px solid red;
+  font-size: 0.5rem;
+  height: 1rem;
+  max-height: 1rem;
+  color: #143168;
+  text-align: center;
+}

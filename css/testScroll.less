@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  li 
+  {
+    list-style: none;
+  }
+  
+  /*声明字体*/
+  @font-face {
+    font-family: electronicFont;
+    src: url(../font/DS-DIGIT.TTF);
+  }
+  
+  @font-face {
+    font-family: futura;
+    src: url(../font/futura-light.ttf);
+  }
+  
+  @font-face {
+    font-family: futuraBook;
+    src: url(../font/Futura-Book.ttf);
+  }
+
+  table {
+	border-spacing: 0;
+	border-collapse: collapse;
+	text-align: center;
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+	thead {
+		display: table;
+		width: 100%;
+		table-layout: fixed;    //thead layout要是fixed，这样确保无论tbody怎么scroll都不会覆盖thead
+		//width: calc( 100% - 1em);
+		th {
+			background: rgb(189, 44, 44);
+		    }
+	    }
+    tbody {
+		display: block;         //tbody必须要设置成一个block（一个固定方块，height是100px），如果设置成table，显示在html上将会以table形式（整个表格全部显示）
+		height: 100px;          //这是tbody的高度
+		overflow-y: scroll;
+		overflow-x: hidden;
+        tr {
+            display: table;     //tbody里面的每一行，都是以table的形式显示，确保这一行可以全部显示出来
+            width: 100%;
+            table-layout: fixed;
+            text-align: center;
+	        }
+	}	
+}
+    
