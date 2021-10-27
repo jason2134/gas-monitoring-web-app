@@ -1,4 +1,4 @@
-# gas-monitoring-web-app
+# Gas-monitoring-web-app
 A web application project developed by me and Dr.Ye Wenhao(Tyrion) when studying in HKUST. This web applciation is designed for gas sensor monitoring. 
 
 
