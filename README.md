@@ -14,16 +14,12 @@ Programming Languages used for this project:
 ## 📝 Table of Contents
 
 - [About](#about)
-- [File Structure](#file_structure)
-- [Getting Started](#getting_started)
-- [Deployment](#deployment)
-- [Built Using](#built_using)
+- [How does it work](#work)
 - [Authors](#authors)
-- [Acknowledgments](#acknowledgement)
 
 ## 🧐 About <a name = "about"></a>
 
-A web application project developed by me and Dr.Ye Wenhao(Tyrion) when studying in HKUST. 
+A web application project developed by me and Dr.Ye Wenhao(William) when studying in HKUST. 
 
 This web applciation is designed for gas sensor monitoring.  
 This dashboard features the following in history and real time:
@@ -33,119 +29,47 @@ This dashboard features the following in history and real time:
 
 ### How does it look like:
 ![ezgif com-gif-maker](https://user-images.githubusercontent.com/70568099/134768464-5831683c-028d-4bf9-8017-691a58813f3e.gif)
+1. After getting into the console, you can see the 3D monitored floor plan in the middle, with four orange blocks representing the gas sensor nodes.
+2. After clicking on one of the nodes, real time gas concentration, tempaerature and humidity detected by that node is streamed to the dashboard
+   - The six panels on the side will show the real time changes for each individual parameter
+   - The panel on the bottom shows a ranking of the parameters among the four nodes, clicking the parameter bar above it will allow you to view the leaderboard for that certain metric
 
-### How does it work:
+## 🚀 How does it work <a name = "work"></a>:
 This full project is consisted of two parts: hardware layer and web application layer.
+- Hardware Layer: Gas Sensor, Arduino Gateway
+- Web Application Layer: Frontend Webpage, Backend Server, Database
+- Remarks: This respostory only stores the web application layer of the whole project
+### 🖥️ **Architecture**
+<img src="https://github.com/jason2134/gas-monitoring-web-app/blob/master/web-app-process-flow.jpg">
 
 
-#### 📥 **Network** 
-- [VPC - Virtual Private Cloud](https://github.com/reynoldnathaniel/Terraform-Infrastructure-Module/tree/main/VPC)
-  - VPC
-  - Internet Gateway
-  - NAT Gateway
-  - Public Subnet
-  - Private Subnet - Application Layer
-  - Private Subnet - Data Layer
-  - Public and Private Route Table
-- [SecurityGroup](https://github.com/reynoldnathaniel/Terraform-Infrastructure-Module/tree/main/SecurityGroup)
-  - Only Security Group
-- [SecurityGroupRule](https://github.com/reynoldnathaniel/Terraform-Infrastructure-Module/tree/main/SecurityGroupRule)
-  - Security Group Rules for Security Groups
-- ELB - Elastic Load Balancing
-  - [ALB - Application Load Balancing](https://github.com/reynoldnathaniel/Terraform-Infrastructure-Module/tree/main/ELB/ALB)
-    - Application load Balancer
-    - Application Load Balancer Listener (HTTP/S)
-  - [NLB - Network Load Balancing](https://github.com/reynoldnathaniel/Terraform-Infrastructure-Module/tree/main/ELB/NLB)
-    - Network Load Balancer
-    - Network Load Balancer Listener
-  - [TargetGroup](https://github.com/reynoldnathaniel/Terraform-Infrastructure-Module/tree/main/ELB/TargetGroup)
-    - Load Balancing Target Group
-    - Load Balancing Target Group Attachment 
-- [CloudFront](https://github.com/reynoldnathaniel/Terraform-Infrastructure-Module/tree/main/CloudFront)
-  - CloudFront Distribution
-  - Origin Access Identity (OAI)
-- [WAF](https://github.com/reynoldnathaniel/Terraform-Infrastructure-Module/tree/main/WAF)
-  - WAF ACL
-#### 🖥️ **Compute**
-- [EC2 - Elastic Compute Cloud](https://github.com/reynoldnathaniel/Terraform-Infrastructure-Module/tree/main/EC2)
-  - EC2 instance
-  - EBS Volumes
-  - Elastic IP
-  - IAM Instance Profile
-  - Key Pair
-- [ASG - Auto Scaling Group](https://github.com/reynoldnathaniel/Terraform-Infrastructure-Module/tree/main/ASG)
-  - Launch Template
-  - Auto Scaling Group
-  - Key Pair
-  - IAM Instance Profile
-#### 💽 **Database**
-- [RDS - Relational Database Server](https://github.com/reynoldnathaniel/Terraform-Infrastructure-Module/tree/main/RDS)
-  - RDS Subnet Group
-  - RDS Instance
-- [ElastiCache - Redis Only](https://github.com/reynoldnathaniel/Terraform-Infrastructure-Module/tree/main/ElastiCache)
-  - ElastiCache Subnet Group
-  - ElastiCache Replcation Group
+- Step 1: Gas sensor detects gas concentration, humidity and temperature, then stores the data to MongoDB database through Arduino board
+- Step 2: User accesses the dashboard, and send a request to the backend
+- Step 3: Backend API processes the request
+- Step 4: Backend script is executed, send a request to the database
+- Step 5: The requested data is sent back to backend
+- Step 6: Requested data is sent back to the frontend, and being displayed on the dashboard 
 
-#### 💾 **Storage**
-- [S3](https://github.com/reynoldnathaniel/Terraform-Infrastructure-Module/tree/main/S3)
-  - Although still usable, [this version of S3 is deprecated](https://www.hashicorp.com/blog/terraform-aws-provider-4-0-refactors-s3-bucket-resource)
-  - S3 Bucket
-  - S3 Bucket Policy
-  - S3 Logging Bucket
-  - S3 Logging Bucket Policy
-  - VPC Endpoint
-  - Route Table Association
-
-- [S3_Updates](https://github.com/jason2134/Terraform-Infrastructure-Module/tree/main/S3_Updates)
-  - [Updated version of S3](https://www.hashicorp.com/blog/terraform-aws-provider-4-0-refactors-s3-bucket-resource)
-  - S3 Bucket
-  - S3 Bucket Configrations
-  - S3 Object
-  - S3 Policy
-  - VPC Endpoint
-
-#### 💡 **Serverless**
-- SQS - Simple Queue Service
-  - [SQSQueue](https://github.com/reynoldnathaniel/Terraform-Infrastructure-Module/tree/main/SQS/SQSQueue)
-    - SQS Queue
-  - [SQSQueuePolicy](https://github.com/reynoldnathaniel/Terraform-Infrastructure-Module/tree/main/SQS/SQSQueuePolicy)
-    - SQS Queue Policy
-    - IAM Policy Document
-- [Lambda (Need more development)](https://github.com/reynoldnathaniel/Terraform-Infrastructure-Module/tree/main/Lambda/Function)
-  - Function
-    - Lambda Function
-    - Lambda Permissions
-#### 🔐 **Identity and Monitoring**
-- IAM
-  - [IAM-Assumable-Role](https://github.com/reynoldnathaniel/Terraform-Infrastructure-Module/tree/main/IAM/IAM-Assumable-Role)
-    - IAM Role
-    - IAM Policy Document (Trust Relationship)
-    - IAM Role Policy Attachment
-  - [IAM-Policy](https://github.com/reynoldnathaniel/Terraform-Infrastructure-Module/tree/main/IAM/IAM-Policy)
-    - IAM Policy 
-  - [IAM-User](https://github.com/reynoldnathaniel/Terraform-Infrastructure-Module/tree/main/IAM/IAM-User)
-    - IAM User
-    - IAM IAM Access Key
-    - IAM User Policy Attachment
-- CloudWatch
-  - [LogGroup](https://github.com/reynoldnathaniel/Terraform-Infrastructure-Module/tree/main/CloudWatch/LogGroup)
-    - CloudWatch Log Group
-    - CloudWatch Log Stream
-  - [LogMetricFilter](https://github.com/reynoldnathaniel/Terraform-Infrastructure-Module/tree/main/CloudWatch/LogMetricFilter)
-    - CloudWatch Log Metric Filter
-  - [LogSubscriptionFilter](https://github.com/reynoldnathaniel/Terraform-Infrastructure-Module/tree/main/CloudWatch/LogSubscriptionFilter)
-    - CloudWatch Log Subscription Filter
-  - [MetricAlarm](https://github.com/reynoldnathaniel/Terraform-Infrastructure-Module/tree/main/CloudWatch/MetricAlarm)
-    - CloudWatch Metric Alarm
-- [Parameter Store](https://github.com/reynoldnathaniel/Terraform-Infrastructure-Module/tree/main/ParameterStore)
-  - SSM Paramter Store
-- [Secrets Manager](https://github.com/reynoldnathaniel/Terraform-Infrastructure-Module/tree/main/SecretsManager)
-  - Secrets Manager
+### 📥 **Components** 
+- Fronend
+  - HTML5
+  - CSS
+    - [LESS](https://lesscss.org/)
+  - JavaScript
+    - [EChart.js](https://echarts.apache.org/en/index.html)
+    - [three.js](https://threejs.org/)
+    - [flexible.js](https://github.com/amfe/lib-flexible)
+    - [jQuery](https://jquery.com/)
+ - Backend
+   - Python
+     - [Tornado Web Server](https://www.tornadoweb.org/en/stable/)
+     - [PyMongo](https://pymongo.readthedocs.io/en/stable/)
+ - Database
+   - [MongoDB](https://www.mongodb.com/)
+    
 
 ## ✍️ Authors <a name = "authors"></a>
 
-- [@Benjamin Ko](https://github.com/William-ywh)
+- [@William Ye](https://github.com/William-ywh)
 - [@Jason Wong](https://github.com/jason2134)
-## 🎉 Acknowledgements <a name = "acknowledgement"></a>
 
-- [Terraform AWS Docs](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
