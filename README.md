@@ -1,14 +1,4 @@
 
-
-Programming Languages used for this project:
-
-
-  1. Front-end:HTML, CSS, JavaScript
-    
-  2. Back-end: Python / Tornado Web Framework, MongoDB
-
-<h3 align="center">AI-Powered Real Time Gas Monitoring Dashboard</h3>
-
 ---
 
 ## 📝 Table of Contents
