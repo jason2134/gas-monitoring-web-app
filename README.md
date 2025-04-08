@@ -32,12 +32,14 @@ This full project is consisted of two parts: hardware layer and web application 
 <img src="https://github.com/jason2134/gas-monitoring-web-app/blob/master/web-app-process-flow.jpg">
 
 
-- Step 1: Gas sensor detects gas concentration, humidity and temperature, then stores the data to MongoDB database through Arduino board
-- Step 2: User accesses the dashboard, and send a request to the backend
-- Step 3: Backend API processes the request
-- Step 4: Backend script is executed, send a request to the database
-- Step 5: The requested data is sent back to backend
-- Step 6: Requested data is sent back to the frontend, and being displayed on the dashboard 
+- Step 1: Gas sensor detects raw data related to type of gas and its concentration. Raw data is being sent to backend for ML processing
+- Step 2: The raw data is processed through PCA and fitted into neural network for classifying type of gas and predict its concentration
+- Step 3: Predicted results are passed into MongoDB database
+- Step 4: User accesses the dashboard, and send a request to the backend
+- Step 5: Backend API processes the request
+- Step 6: Backend script is executed, send a request to the database
+- Step 7: The requested data is sent back to backend
+- Step 8: Requested data is sent back to the frontend, and being displayed on the dashboard 
 
 ### 📥 **Components** 
 - Fronend
