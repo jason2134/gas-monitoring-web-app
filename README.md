@@ -8,7 +8,7 @@
 
 ## 🧐 About <a name = "about"></a>
 
-A web application project developed by me and Dr.Ye Wenhao(William) when studying in HKUST. 
+A IoT web application project developed by me and Dr.Ye Wenhao(William) when studying in HKUST. 
 
 This web applciation is designed for gas sensor monitoring.  
 This dashboard features the following in history and real time:
